@@ -2,28 +2,281 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-weight: bolder;
+      user-select: none;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(63, 56, 56);
+    }
+
+    .page-box {
+      height: 100%;
+      width: 100%;
+    }
+
+    .page {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 200px;
+      width: 300px;
+      transition: all 2s;
+    }
+
+    @property --ang {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @property --lst {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    .page-inside {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      border-radius: 30px;
+      background-color: rgb(165, 46, 133);
+    }
+
+    .page-inside::before,
+    .page-inside::after {
+      content: '';
+      position: absolute;
+      --ang: 0deg;
+      top: 50%;
+      padding: 5px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 100%;
+      width: 100%;
+      background: conic-gradient(from var(--ang), crimson, yellow, cyan, deeppink, crimson);
+      z-index: -1;
+      border-radius: 30px;
+      animation: rotate 3s infinite linear;
+    }
+
+    .page-inside::after,
+    .last-msg::after {
+      filter: blur(10px);
+    }
+
+    @keyframes rotate {
+      from {
+        --ang: 0deg;
+        --lst: 0deg;
+      }
+
+      to {
+        --ang: 360deg;
+        --lst: 360deg;
+      }
+    }
+
+    .page:nth-child(odd) {
+      transform: translate(-50%, -50%) rotate(5deg);
+    }
+
+    .page:nth-child(even) {
+      transform: translate(-50%, -50%) rotate(-5deg);
+    }
+
+    .mainQues {
+      height: 100%;
+      width: 100%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
+
+    .ques {
+      height: 150px;
+      padding: 15px 20px 0 20px;
+      background-color: cyan;
+      border-radius: 20px;
+    }
+
+    h2 {
+      margin-top: 15px;
+    }
+
+
+    .btn1 {
+      left: 40%;
+      padding: 10px 25px;
+    }
+
+    .btn2 {
+      left: 60%;
+      padding: 10px 20px;
+      transition: all 0.5s;
+    }
+
+    .bt {
+      position: absolute;
+      top: 54%;
+      transform: translate(-50%, -50%);
+      background-color: crimson;
+      border-radius: 30px;
+      cursor: pointer;
+      color: #fff;
+      border: none;
+      font-weight: bolder;
+    }
+
+    .last-msg {
+      height: 100px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      background-color: rgb(200, 212, 65);
+      border-radius: 10px;
+      color: #fff;
+      display: none;
+    }
+
+    .last-msg::before,
+    .last-msg::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 100%;
+      width: 100%;
+      --lst: 0deg;
+      background: conic-gradient(from var(--lst), rgb(177, 56, 190), cyan, rgb(177, 56, 190));
+      border-radius: 10px;
+      z-index: -1;
+      padding: 5px;
+      animation: rotate 3s infinite linear;
+    }
+  </style>
 </head>
 
 <body>
-    <form
-  action="https://formspree.io/f/myzkpyge"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
+  <div class="page-box">
+    <div class="page">
+      <div class="page-inside">आाज तुला काहीतरी सांगायचं आहे 🤭</div>
+    </div>
+    <div class="page">
+      <div class="page-inside">आाज तुला काहीतरी सांगायचं आहे 🤭</div>
+    </div>
+    <div class="page">
+      <div class="page-inside">आाज तुला काहीतरी सांगायचं आहे 🤭</div>
+    </div>
+    <div class="page">
+      <div class="page-inside">आाज तुला काहीतरी सांगायचं आहे 🤭</div>
+    </div>
+    <div class="page">
+      <div class="page-inside">आाज तुला का हीतरी सांगायचं आहे 🤭</div>
+    </div>
+  </div>
+
+  <form class="mainQues" action="https://formspree.io/f/xqaelkka" method="post">
+    <div class="ques">
+      <h2>तूच माझ्यावर प्रेम आहे का ?</h2>
+    </div>
+    <input type="hidden" name="email" value="n66625763@gmail.com">
+    <input type="hidden" name="message" value="bhava ti ho mhanali">
+    <button class="btn1 bt" type="submit">हो</button>
+    <button class="btn2 bt" type="button">नाही</button>
+  </form>
+
+  <div class="last-msg">
+    <h2>I Love You 2</h2>
+    <p>आधी का नही म्हणत होती मग 😥</p>
+  </div>
 
 </body>
+<script>
+  const pages = document.querySelectorAll(".page");
+  const pageBox = document.querySelector(".page-box");
+  const mainQues = document.querySelector(".mainQues");
+  let CountPage = pages.length - 1;
+  const yesBtn = document.querySelector(".btn1");
+  const noBtn = document.querySelector(".btn2");
+  const last_msg = document.querySelector(".last-msg");
+
+  const changePage = () => {
+    pages[CountPage].style.top = '-40%';
+    CountPage--;
+    if (CountPage >= 0) {
+      setTimeout(changePage, 2000);
+    } else {
+      setTimeout(() => {
+        pageBox.style.display = "none";
+        mainQues.style.display = "flex"
+      }, 1000);
+    }
+  }
+  changePage();
+
+  noBtn.onmouseover = () => {
+    const top = Math.floor(Math.random() * 100);
+    const left = Math.floor(Math.random() * 100);
+    const t = top >= 86 ? 86 : top <= 16 ? 16 : top;
+    const l = left >= 86 ? 86 : left <= 16 ? 16 : left;
+    noBtn.style.top = `${t}%`;
+    noBtn.style.left = `${l}%`;
+  }
+
+  noBtn.onclick = () => {
+    const top = Math.floor(Math.random() * 100);
+    const left = Math.floor(Math.random() * 100);
+    const t = top >= 86 ? 86 : top <= 16 ? 16 : top;
+    const l = left >= 86 ? 86 : left <= 16 ? 16 : left;
+    noBtn.style.top = `${t}%`;
+    noBtn.style.left = `${l}%`;
+  }
+
+  mainQues.onsubmit = (e) => {
+    e.preventDefault();
+    let form = e.target;
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { "Accept": "application/json" }
+    }).then((res) => {
+      if (res.ok) {
+        mainQues.style.display = "none"
+        last_msg.style.display = "flex";
+      } else {
+        mainQues.style.display = "none"
+        last_msg.style.display = "flex";
+      }
+    }).catch((err) => {
+      mainQues.style.display = "none"
+      last_msg.style.display = "flex";
+    })
+  }
+</script>
 
 </html>
